@@ -3,8 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Words of the day for {{ formattedDate }}</title>
+    <title>Words of the day</title>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/vue-router@3.5.3/dist/vue-router.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <style>
         @import url('https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css');
@@ -12,52 +13,61 @@
 </head>
 <body class="bg-gray-100 p-4">
     <div id="app" class="max-w-4xl mx-auto">
-        <h1 class="text-3xl font-bold text-center mb-4">Words of the day for {{ formattedDate }}</h1>
-        <div class="flex justify-between mb-4">
-            <div>
-                <button v-if="previousExists" @click="loadPrevious" class="bg-blue-500 text-white px-4 py-2 rounded">Previous</button>
-            </div>
-            <div class="flex-grow"></div>
-            <div>
-                <button v-if="nextExists" @click="loadNext" class="bg-blue-500 text-white px-4 py-2 rounded">Next</button>
-            </div>
-        </div>
-        <div v-for="(wordGroup, groupIndex) in words" :key="groupIndex" class="bg-white p-4 my-4 rounded-lg shadow-lg">
-            <div v-for="(wordData, wordIndex) in wordGroup" :key="wordData.word + wordIndex">
-                <h2 class="text-2xl font-bold mb-2">{{ wordData.word }}</h2>
-                <p v-if="wordData.phonetic" class="italic text-gray-600 mb-2">{{ wordData.phonetic }}</p>
-                <div v-for="(meaning, meaningIndex) in wordData.meanings" :key="meaning.partOfSpeech + meaningIndex" class="mb-4">
-                    <h3 class="text-xl font-semibold">{{ meaning.partOfSpeech }}</h3>
-                    <ul class="list-disc pl-5">
-                        <li v-for="(definition, defIndex) in meaning.definitions" :key="definition.definition + defIndex" class="mb-1">
-                            <p>{{ definition.definition }}</p>
-                            <p v-if="definition.example" class="text-sm text-gray-500">Example: {{ definition.example }}</p>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-        </div>
+        <router-view></router-view>
     </div>
 
     <script>
         Vue.config.productionTip = false;
         Vue.config.devtools = false;
 
-        new Vue({
-            el: '#app',
-            data: {
-                words: [],
-                currentDate: new Date(),
-                previousExists: false,
-                nextExists: false
+        const WordOfTheDay = {
+            template: `
+                <div>
+                    <h1 class="text-3xl font-bold text-center mb-4">Words of the day for {{ formattedDate }}</h1>
+                    <div class="flex justify-between mb-4">
+                        <div>
+                            <button v-if="previousExists" @click="navigateToPrevious" class="bg-blue-500 text-white px-4 py-2 rounded">Previous</button>
+                        </div>
+                        <div class="flex-grow"></div>
+                        <div>
+                            <button v-if="nextExists" @click="navigateToNext" class="bg-blue-500 text-white px-4 py-2 rounded">Next</button>
+                        </div>
+                    </div>
+                    <div v-if="words.length === 0" class="text-center">
+                        <p class="text-red-500">There are no words for this day.</p>
+                        <button @click="goToToday" class="bg-blue-500 text-white px-4 py-2 rounded mt-4">Go to today's date</button>
+                    </div>
+                    <div v-else>
+                        <div v-for="(wordGroup, groupIndex) in words" :key="groupIndex" class="bg-white p-4 my-4 rounded-lg shadow-lg">
+                            <div v-for="(wordData, wordIndex) in wordGroup" :key="wordData.word + wordIndex">
+                                <h2 class="text-2xl font-bold mb-2">{{ wordData.word }}</h2>
+                                <p v-if="wordData.phonetic" class="italic text-gray-600 mb-2">{{ wordData.phonetic }}</p>
+                                <div v-for="(meaning, meaningIndex) in wordData.meanings" :key="meaning.partOfSpeech + meaningIndex" class="mb-4">
+                                    <h3 class="text-xl font-semibold">{{ meaning.partOfSpeech }}</h3>
+                                    <ul class="list-disc pl-5">
+                                        <li v-for="(definition, defIndex) in meaning.definitions" :key="definition.definition + defIndex" class="mb-1">
+                                            <p>{{ definition.definition }}</p>
+                                            <p v-if="definition.example" class="text-sm text-gray-500">Example: {{ definition.example }}</p>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `,
+            data() {
+                return {
+                    words: [],
+                    previousExists: false,
+                    nextExists: false
+                };
             },
             computed: {
                 formattedDate() {
-                    return this.currentDate.toLocaleDateString(undefined, {
-                        year: 'numeric',
-                        month: 'long',
-                        day: 'numeric'
-                    });
+                    const date = this.$route.params.date;
+                    const options = { year: 'numeric', month: 'long', day: 'numeric' };
+                    return new Date(date).toLocaleDateString(undefined, options);
                 }
             },
             methods: {
@@ -105,22 +115,53 @@
                             this.nextExists = false;
                         });
                 },
-                loadPrevious() {
+                navigateToPrevious() {
                     if (this.previousExists) {
-                        this.currentDate.setDate(this.currentDate.getDate() - 1);
-                        this.loadWords(this.currentDate);
+                        const previousDate = new Date(this.$route.params.date);
+                        previousDate.setDate(previousDate.getDate() - 1);
+                        this.$router.push({ name: 'words', params: { date: this.formatDate(previousDate) } });
                     }
                 },
-                loadNext() {
+                navigateToNext() {
                     if (this.nextExists) {
-                        this.currentDate.setDate(this.currentDate.getDate() + 1);
-                        this.loadWords(this.currentDate);
+                        const nextDate = new Date(this.$route.params.date);
+                        nextDate.setDate(nextDate.getDate() + 1);
+                        this.$router.push({ name: 'words', params: { date: this.formatDate(nextDate) } });
                     }
+                },
+                goToToday() {
+                    const today = new Date();
+                    this.$router.push({ name: 'words', params: { date: this.formatDate(today) } });
+                }
+            },
+            watch: {
+                '$route.params.date'(newDate) {
+                    this.loadWords(newDate);
                 }
             },
             mounted() {
-                this.loadWords(this.currentDate);
+                this.loadWords(this.$route.params.date);
             }
+        };
+
+        const routes = [
+            { path: '/words-for/:date', name: 'words', component: WordOfTheDay, props: true },
+            { path: '*', redirect: () => {
+                const today = new Date();
+                const year = today.getFullYear();
+                const month = String(today.getMonth() + 1).padStart(2, '0');
+                const day = String(today.getDate()).padStart(2, '0');
+                return `/words-for/${year}-${month}-${day}`;
+            }}
+        ];
+
+        const router = new VueRouter({
+            routes
+        });
+
+        new Vue({
+            el: '#app',
+            router
         });
     </script>
 </body>
