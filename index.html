@@ -13,20 +13,22 @@
 <body class="bg-gray-100 p-4">
     <div id="app" class="max-w-4xl mx-auto">
         <div class="flex justify-between mb-4">
-            <button @click="loadPrevious" :disabled="!previousExists" class="bg-blue-500 text-white px-4 py-2 rounded disabled:opacity-50">Previous</button>
-            <button @click="loadNext" :disabled="!nextExists" class="bg-blue-500 text-white px-4 py-2 rounded disabled:opacity-50">Next</button>
+            <button v-if="previousExists" @click="loadPrevious" class="bg-blue-500 text-white px-4 py-2 rounded">Previous</button>
+            <button v-if="nextExists" @click="loadNext" class="bg-blue-500 text-white px-4 py-2 rounded">Next</button>
         </div>
-        <div v-for="wordData in words" :key="wordData.word" class="bg-white p-4 my-4 rounded-lg shadow-lg">
-            <h2 class="text-2xl font-bold mb-2">{{ wordData.word }}</h2>
-            <p class="italic text-gray-600 mb-2">{{ wordData.phonetic }}</p>
-            <div v-for="meaning in wordData.meanings" :key="meaning.partOfSpeech" class="mb-4">
-                <h3 class="text-xl font-semibold">{{ meaning.partOfSpeech }}</h3>
-                <ul class="list-disc pl-5">
-                    <li v-for="definition in meaning.definitions" :key="definition.definition" class="mb-1">
-                        <p>{{ definition.definition }}</p>
-                        <p v-if="definition.example" class="text-sm text-gray-500">Example: {{ definition.example }}</p>
-                    </li>
-                </ul>
+        <div v-for="wordGroup in words" :key="wordGroup[0].word" class="bg-white p-4 my-4 rounded-lg shadow-lg">
+            <div v-for="wordData in wordGroup" :key="wordData.word">
+                <h2 class="text-2xl font-bold mb-2">{{ wordData.word }}</h2>
+                <p v-if="wordData.phonetic" class="italic text-gray-600 mb-2">{{ wordData.phonetic }}</p>
+                <div v-for="meaning in wordData.meanings" :key="meaning.partOfSpeech" class="mb-4">
+                    <h3 class="text-xl font-semibold">{{ meaning.partOfSpeech }}</h3>
+                    <ul class="list-disc pl-5">
+                        <li v-for="definition in meaning.definitions" :key="definition.definition" class="mb-1">
+                            <p>{{ definition.definition }}</p>
+                            <p v-if="definition.example" class="text-sm text-gray-500">Example: {{ definition.example }}</p>
+                        </li>
+                    </ul>
+                </div>
             </div>
         </div>
     </div>
