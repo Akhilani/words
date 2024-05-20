@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Words of the day</title>
+    <title>Daily Words</title>
     <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/vue-router@3.5.3/dist/vue-router.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
@@ -86,6 +86,8 @@
                         })
                         .catch(() => {
                             this.words = [];
+                            this.previousExists = false;
+                            this.nextExists = false;
                         });
 
                     this.checkPrevious(date);
