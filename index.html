@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Daily Words</title>
-    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <title>Word Definitions</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <style>
         @import url('https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css');
@@ -16,14 +16,14 @@
             <button v-if="previousExists" @click="loadPrevious" class="bg-blue-500 text-white px-4 py-2 rounded">Previous</button>
             <button v-if="nextExists" @click="loadNext" class="bg-blue-500 text-white px-4 py-2 rounded">Next</button>
         </div>
-        <div v-for="wordGroup in words" :key="wordGroup[0].word" class="bg-white p-4 my-4 rounded-lg shadow-lg">
-            <div v-for="wordData in wordGroup" :key="wordData.word">
+        <div v-for="(wordGroup, groupIndex) in words" :key="groupIndex" class="bg-white p-4 my-4 rounded-lg shadow-lg">
+            <div v-for="(wordData, wordIndex) in wordGroup" :key="wordData.word + wordIndex">
                 <h2 class="text-2xl font-bold mb-2">{{ wordData.word }}</h2>
                 <p v-if="wordData.phonetic" class="italic text-gray-600 mb-2">{{ wordData.phonetic }}</p>
-                <div v-for="meaning in wordData.meanings" :key="meaning.partOfSpeech" class="mb-4">
+                <div v-for="(meaning, meaningIndex) in wordData.meanings" :key="meaning.partOfSpeech + meaningIndex" class="mb-4">
                     <h3 class="text-xl font-semibold">{{ meaning.partOfSpeech }}</h3>
                     <ul class="list-disc pl-5">
-                        <li v-for="definition in meaning.definitions" :key="definition.definition" class="mb-1">
+                        <li v-for="(definition, defIndex) in meaning.definitions" :key="definition.definition + defIndex" class="mb-1">
                             <p>{{ definition.definition }}</p>
                             <p v-if="definition.example" class="text-sm text-gray-500">Example: {{ definition.example }}</p>
                         </li>
@@ -34,6 +34,9 @@
     </div>
 
     <script>
+        Vue.config.productionTip = false;
+        Vue.config.devtools = false;
+
         new Vue({
             el: '#app',
             data: {
