@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Word Definitions</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@2.6.12/dist/vue.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+    <style>
+        @import url('https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css');
+    </style>
+</head>
+<body class="bg-gray-100 p-4">
+    <div id="app" class="max-w-4xl mx-auto">
+        <div class="flex justify-between mb-4">
+            <button @click="loadPrevious" :disabled="!previousExists" class="bg-blue-500 text-white px-4 py-2 rounded disabled:opacity-50">Previous</button>
+            <button @click="loadNext" :disabled="!nextExists" class="bg-blue-500 text-white px-4 py-2 rounded disabled:opacity-50">Next</button>
+        </div>
+        <div v-for="wordData in words" :key="wordData.word" class="bg-white p-4 my-4 rounded-lg shadow-lg">
+            <h2 class="text-2xl font-bold mb-2">{{ wordData.word }}</h2>
+            <p class="italic text-gray-600 mb-2">{{ wordData.phonetic }}</p>
+            <div v-for="meaning in wordData.meanings" :key="meaning.partOfSpeech" class="mb-4">
+                <h3 class="text-xl font-semibold">{{ meaning.partOfSpeech }}</h3>
+                <ul class="list-disc pl-5">
+                    <li v-for="definition in meaning.definitions" :key="definition.definition" class="mb-1">
+                        <p>{{ definition.definition }}</p>
+                        <p v-if="definition.example" class="text-sm text-gray-500">Example: {{ definition.example }}</p>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        new Vue({
+            el: '#app',
+            data: {
+                words: [],
+                currentDate: new Date(),
+                previousExists: false,
+                nextExists: false
+            },
+            methods: {
+                formatDate(date) {
+                    const d = new Date(date);
+                    const year = d.getFullYear();
+                    const month = String(d.getMonth() + 1).padStart(2, '0');
+                    const day = String(d.getDate()).padStart(2, '0');
+                    return `${year}-${month}-${day}`;
+                },
+                loadWords(date) {
+                    const formattedDate = this.formatDate(date);
+                    axios.get(`archive/${formattedDate}.json`)
+                        .then(response => {
+                            this.words = response.data;
+                        })
+                        .catch(() => {
+                            this.words = [];
+                        });
+
+                    this.checkPrevious(date);
+                    this.checkNext(date);
+                },
+                checkPrevious(date) {
+                    const previousDate = new Date(date);
+                    previousDate.setDate(previousDate.getDate() - 1);
+                    const formattedDate = this.formatDate(previousDate);
+                    axios.get(`archive/${formattedDate}.json`)
+                        .then(() => {
+                            this.previousExists = true;
+                        })
+                        .catch(() => {
+                            this.previousExists = false;
+                        });
+                },
+                checkNext(date) {
+                    const nextDate = new Date(date);
+                    nextDate.setDate(nextDate.getDate() + 1);
+                    const formattedDate = this.formatDate(nextDate);
+                    axios.get(`archive/${formattedDate}.json`)
+                        .then(() => {
+                            this.nextExists = true;
+                        })
+                        .catch(() => {
+                            this.nextExists = false;
+                        });
+                },
+                loadPrevious() {
+                    if (this.previousExists) {
+                        this.currentDate.setDate(this.currentDate.getDate() - 1);
+                        this.loadWords(this.currentDate);
+                    }
+                },
+                loadNext() {
+                    if (this.nextExists) {
+                        this.currentDate.setDate(this.currentDate.getDate() + 1);
+                        this.loadWords(this.currentDate);
+                    }
+                }
+            },
+            mounted() {
+                this.loadWords(this.currentDate);
+            }
+        });
+    </script>
+</body>
+</html>
