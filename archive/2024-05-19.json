@@ -1,0 +1,158 @@
+[
+    [
+        {
+            "word": "veracity",
+            "phonetic": "/v\u0259\u02c8\u0279\u00e6.s\u026a.ti/",
+            "phonetics": [
+                {
+                    "text": "/v\u0259\u02c8\u0279\u00e6.s\u026a.ti/"
+                },
+                {
+                    "text": "/v\u0259\u02c8\u0279\u00e6.s\u0259.ti/"
+                }
+            ],
+            "meanings": [
+                {
+                    "partOfSpeech": "noun",
+                    "definitions": [
+                        {
+                            "definition": "(of a person) The quality of speaking or stating the truth; truthfulness.",
+                            "synonyms": [],
+                            "antonyms": []
+                        },
+                        {
+                            "definition": "Something that is true; a truthful statement; a truth.",
+                            "synonyms": [],
+                            "antonyms": []
+                        },
+                        {
+                            "definition": "Agreement with the facts; accordance with the truth; accuracy or precision.",
+                            "synonyms": [],
+                            "antonyms": []
+                        },
+                        {
+                            "definition": "Act of being exact and accurate.",
+                            "synonyms": [],
+                            "antonyms": []
+                        },
+                        {
+                            "definition": "Correctness and carefulness in one's plan of action.",
+                            "synonyms": [],
+                            "antonyms": []
+                        }
+                    ],
+                    "synonyms": [],
+                    "antonyms": []
+                }
+            ]
+        }
+    ],
+    [
+        {
+            "word": "chagrin",
+            "phonetics": [
+                {},
+                {
+                    "text": "/\u02c8\u0283\u00e6\u0261.\u0279\u026an/"
+                },
+                {
+                    "text": "/\u0283\u0259\u02c8\u0261\u0279\u026an/"
+                }
+            ],
+            "meanings": [
+                {
+                    "partOfSpeech": "noun",
+                    "definitions": [
+                        {
+                            "definition": "Distress of mind caused by a failure of aims or plans, want of appreciation, mistakes etc; vexation or mortification.",
+                            "synonyms": [
+                                "disquiet",
+                                "fretfulness",
+                                "mortification",
+                                "peevishness",
+                                "vexation"
+                            ],
+                            "antonyms": []
+                        },
+                        {
+                            "definition": "A type of leather or skin with a rough surface.",
+                            "synonyms": [
+                                "shagreen"
+                            ],
+                            "antonyms": []
+                        }
+                    ],
+                    "synonyms": [
+                        "disquiet",
+                        "fretfulness",
+                        "mortification",
+                        "peevishness",
+                        "vexation",
+                        "shagreen"
+                    ],
+                    "antonyms": []
+                },
+                {
+                    "partOfSpeech": "verb",
+                    "definitions": [
+                        {
+                            "definition": "To bother or vex; to mortify.",
+                            "synonyms": [],
+                            "antonyms": []
+                        },
+                        {
+                            "definition": "To be vexed or annoyed.",
+                            "synonyms": [],
+                            "antonyms": []
+                        }
+                    ],
+                    "synonyms": [],
+                    "antonyms": []
+                },
+                {
+                    "partOfSpeech": "adjective",
+                    "definitions": [
+                        {
+                            "definition": "Feeling chagrin; annoyed; vexed, fretful.",
+                            "synonyms": [],
+                            "antonyms": []
+                        }
+                    ],
+                    "synonyms": [
+                        "chagrined"
+                    ],
+                    "antonyms": []
+                }
+            ]
+        }
+    ],
+    [
+        {
+            "word": "equanimity",
+            "phonetic": "/\u02cci\u02d0kw\u0259\u02c8n\u026am\u026ati\u02d0/",
+            "phonetics": [
+                {
+                    "text": "/\u02cci\u02d0kw\u0259\u02c8n\u026am\u026ati\u02d0/"
+                }
+            ],
+            "meanings": [
+                {
+                    "partOfSpeech": "noun",
+                    "definitions": [
+                        {
+                            "definition": "The state of being calm, stable and composed, especially under stress.",
+                            "synonyms": [],
+                            "antonyms": []
+                        }
+                    ],
+                    "synonyms": [
+                        "calmness",
+                        "composure",
+                        "even-mindedness"
+                    ],
+                    "antonyms": []
+                }
+            ]
+        }
+    ]
+]

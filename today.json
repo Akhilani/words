@@ -1,99 +1,19 @@
 [
     [
         {
-            "word": "hermitage",
-            "phonetics": [],
+            "word": "prattle",
+            "phonetic": "/\u02c8p\u0279\u00e6t\u0259l/",
+            "phonetics": [
+                {
+                    "text": "/\u02c8p\u0279\u00e6t\u0259l/"
+                }
+            ],
             "meanings": [
                 {
                     "partOfSpeech": "noun",
                     "definitions": [
                         {
-                            "definition": "A house or dwelling where a hermit lives.",
-                            "synonyms": [],
-                            "antonyms": []
-                        },
-                        {
-                            "definition": "A place of seclusion.",
-                            "synonyms": [],
-                            "antonyms": []
-                        },
-                        {
-                            "definition": "A period of seclusion.",
-                            "synonyms": [],
-                            "antonyms": []
-                        }
-                    ],
-                    "synonyms": [],
-                    "antonyms": []
-                }
-            ]
-        }
-    ],
-    [
-        {
-            "word": "precipitous",
-            "phonetic": "/p\u0279\u026a\u02c8s\u026ap\u026at\u0259s/",
-            "phonetics": [
-                {
-                    "text": "/p\u0279\u026a\u02c8s\u026ap\u026at\u0259s/"
-                }
-            ],
-            "meanings": [
-                {
-                    "partOfSpeech": "adjective",
-                    "definitions": [
-                        {
-                            "definition": "Steep, like a precipice",
-                            "synonyms": [],
-                            "antonyms": [],
-                            "example": "a precipitous cliff"
-                        },
-                        {
-                            "definition": "Headlong",
-                            "synonyms": [],
-                            "antonyms": [],
-                            "example": "a precipitous fall"
-                        },
-                        {
-                            "definition": "Hasty; rash; quick; sudden",
-                            "synonyms": [],
-                            "antonyms": [],
-                            "example": "precipitous attempts"
-                        }
-                    ],
-                    "synonyms": [
-                        "heedless",
-                        "hotheaded",
-                        "impetuous",
-                        "headlong",
-                        "precipitant",
-                        "precipitous",
-                        "brant",
-                        "steep-to",
-                        "abrupt",
-                        "precipitous",
-                        "subitaneous"
-                    ],
-                    "antonyms": []
-                }
-            ]
-        }
-    ],
-    [
-        {
-            "word": "dilatory",
-            "phonetic": "/\u02c8d\u026al\u0259t(\u0259)\u0279i/",
-            "phonetics": [
-                {
-                    "text": "/\u02c8d\u026al\u0259t(\u0259)\u0279i/"
-                }
-            ],
-            "meanings": [
-                {
-                    "partOfSpeech": "adjective",
-                    "definitions": [
-                        {
-                            "definition": "Relating to dilation; dilative",
+                            "definition": "Silly, childish talk; babble.",
                             "synonyms": [],
                             "antonyms": []
                         }
@@ -102,22 +22,111 @@
                     "antonyms": []
                 },
                 {
-                    "partOfSpeech": "adjective",
+                    "partOfSpeech": "verb",
                     "definitions": [
                         {
-                            "definition": "Intentionally delaying (someone or something), intended to cause delay, gain time, or defer decision.",
-                            "synonyms": [],
-                            "antonyms": [],
-                            "example": "a dilatory strategy"
-                        },
-                        {
-                            "definition": "Slow or tardy.",
+                            "definition": "To speak incessantly and in a childish manner; to babble.",
                             "synonyms": [],
                             "antonyms": []
                         }
                     ],
                     "synonyms": [],
                     "antonyms": []
+                }
+            ]
+        }
+    ],
+    [
+        {
+            "word": "imperious",
+            "phonetics": [
+                {},
+                {
+                    "text": "/\u026am\u02c8p\u026a\u0259\u0279i.\u0259s/"
+                },
+                {
+                    "text": "/\u026am\u02c8p\u026a\u0279i.\u0259s/"
+                }
+            ],
+            "meanings": [
+                {
+                    "partOfSpeech": "adjective",
+                    "definitions": [
+                        {
+                            "definition": "Domineering, arrogant, or overbearing.",
+                            "synonyms": [],
+                            "antonyms": []
+                        },
+                        {
+                            "definition": "Urgent.",
+                            "synonyms": [],
+                            "antonyms": []
+                        },
+                        {
+                            "definition": "Imperial or regal.",
+                            "synonyms": [],
+                            "antonyms": []
+                        }
+                    ],
+                    "synonyms": [
+                        "authoritarian",
+                        "bossy",
+                        "dictatorial",
+                        "domineering",
+                        "overbearing"
+                    ],
+                    "antonyms": []
+                }
+            ]
+        }
+    ],
+    [
+        {
+            "word": "indefatigable",
+            "phonetic": "/\u02cc\u026and\u026af\u0259\u02c8ti\u0261\u0259b\u0259l/",
+            "phonetics": [
+                {
+                    "text": "/\u02cc\u026and\u026af\u0259\u02c8ti\u0261\u0259b\u0259l/"
+                },
+                {
+                    "text": "/\u02cc\u026and\u026a\u02c8f\u00e6t\u026a\u0261\u0259bl/"
+                },
+                {
+                    "text": "/\u02cc\u026and\u0259\u02c8f\u00e6t\u0259\u0261\u0259b\u0259l/"
+                }
+            ],
+            "meanings": [
+                {
+                    "partOfSpeech": "adjective",
+                    "definitions": [
+                        {
+                            "definition": "Extremely persistent and untiring.",
+                            "synonyms": [
+                                "inexhaustible",
+                                "relentless",
+                                "tireless",
+                                "unflagging",
+                                "unsinkable",
+                                "untiring",
+                                "unwearying"
+                            ],
+                            "antonyms": [
+                                "defatigable"
+                            ]
+                        }
+                    ],
+                    "synonyms": [
+                        "inexhaustible",
+                        "relentless",
+                        "tireless",
+                        "unflagging",
+                        "unsinkable",
+                        "untiring",
+                        "unwearying"
+                    ],
+                    "antonyms": [
+                        "defatigable"
+                    ]
                 }
             ]
         }

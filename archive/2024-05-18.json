@@ -1,0 +1,125 @@
+[
+    [
+        {
+            "word": "hermitage",
+            "phonetics": [],
+            "meanings": [
+                {
+                    "partOfSpeech": "noun",
+                    "definitions": [
+                        {
+                            "definition": "A house or dwelling where a hermit lives.",
+                            "synonyms": [],
+                            "antonyms": []
+                        },
+                        {
+                            "definition": "A place of seclusion.",
+                            "synonyms": [],
+                            "antonyms": []
+                        },
+                        {
+                            "definition": "A period of seclusion.",
+                            "synonyms": [],
+                            "antonyms": []
+                        }
+                    ],
+                    "synonyms": [],
+                    "antonyms": []
+                }
+            ]
+        }
+    ],
+    [
+        {
+            "word": "precipitous",
+            "phonetic": "/p\u0279\u026a\u02c8s\u026ap\u026at\u0259s/",
+            "phonetics": [
+                {
+                    "text": "/p\u0279\u026a\u02c8s\u026ap\u026at\u0259s/"
+                }
+            ],
+            "meanings": [
+                {
+                    "partOfSpeech": "adjective",
+                    "definitions": [
+                        {
+                            "definition": "Steep, like a precipice",
+                            "synonyms": [],
+                            "antonyms": [],
+                            "example": "a precipitous cliff"
+                        },
+                        {
+                            "definition": "Headlong",
+                            "synonyms": [],
+                            "antonyms": [],
+                            "example": "a precipitous fall"
+                        },
+                        {
+                            "definition": "Hasty; rash; quick; sudden",
+                            "synonyms": [],
+                            "antonyms": [],
+                            "example": "precipitous attempts"
+                        }
+                    ],
+                    "synonyms": [
+                        "heedless",
+                        "hotheaded",
+                        "impetuous",
+                        "headlong",
+                        "precipitant",
+                        "precipitous",
+                        "brant",
+                        "steep-to",
+                        "abrupt",
+                        "precipitous",
+                        "subitaneous"
+                    ],
+                    "antonyms": []
+                }
+            ]
+        }
+    ],
+    [
+        {
+            "word": "dilatory",
+            "phonetic": "/\u02c8d\u026al\u0259t(\u0259)\u0279i/",
+            "phonetics": [
+                {
+                    "text": "/\u02c8d\u026al\u0259t(\u0259)\u0279i/"
+                }
+            ],
+            "meanings": [
+                {
+                    "partOfSpeech": "adjective",
+                    "definitions": [
+                        {
+                            "definition": "Relating to dilation; dilative",
+                            "synonyms": [],
+                            "antonyms": []
+                        }
+                    ],
+                    "synonyms": [],
+                    "antonyms": []
+                },
+                {
+                    "partOfSpeech": "adjective",
+                    "definitions": [
+                        {
+                            "definition": "Intentionally delaying (someone or something), intended to cause delay, gain time, or defer decision.",
+                            "synonyms": [],
+                            "antonyms": [],
+                            "example": "a dilatory strategy"
+                        },
+                        {
+                            "definition": "Slow or tardy.",
+                            "synonyms": [],
+                            "antonyms": []
+                        }
+                    ],
+                    "synonyms": [],
+                    "antonyms": []
+                }
+            ]
+        }
+    ]
+]
